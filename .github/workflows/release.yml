@@ -17,11 +17,11 @@ jobs:
         run: |
           echo "GITHUB_BRANCH=$(git branch --show-current)" >> $GITHUB_ENV
       
-      #- name: Get the value
-      #  run: echo "${env.GITHUB_BRANCH}"
+      - name: Get the value
+        run: echo "${{env.GITHUB_BRANCH}}"
         
       - name: Exit if not on master branch
-        if: env.GITHUB_BRANCH != 'master'
+        if: ${{env.GITHUB_BRANCH}} != 'master'
         run: exit -1
 
       - name: Build project
