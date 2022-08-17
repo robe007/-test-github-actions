@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        
+      - name: Exit if not on master branch
+        if: endsWith(github.ref, 'master') == false
+        run: exit -1
 
       - name: Build project
         run: |
